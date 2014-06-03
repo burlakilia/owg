@@ -32,5 +32,7 @@ module.exports = function (cfg, log) {
     var adapter = require('./adapters/' + cfg.protocol),
         publish = adapter.init(cfg, log);
 
+    console.log(cfg);
+
     return { publish: publish, handle: handle(publish, log) };
 };

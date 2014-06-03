@@ -50,7 +50,7 @@ exports.init = function (cfg, log) {
 
         function (connection, next) {
 
-            var exc = connection.exchange(config.exchange, { durable: cfg.durable, type: 'topic',  autoDelete: false }).on('open', function () {
+            var exc = connection.exchange(config.exchange, { durable: !!cfg.durable, type: 'topic',  autoDelete: !!cfg.autoDelete }).on('open', function () {
                 next(null, exc);
             });
 

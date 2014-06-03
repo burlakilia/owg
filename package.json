@@ -1,27 +1,32 @@
 {
-  "name": "owg",
-  "description": "This is the one way gateway which publishes your messages via different protocols into services using the popular node js middleware framework - connect",
-  "keywords": [
-    "amqp",
-    "connect",
-    "gateway"
-  ],
-  "author": {
-    "name": "Burlak Ilia",
-    "email": "burlak@psu.karelia.ru"
-  },
-  "version": "0.1.0",
-  "main": "./handler",
-  "dependencies": {
+    "name": "owg",
+    "description": "This is the one way gateway which publishes your messages via different protocols into services using the popular node js middleware framework - connect",
+    "keywords": [
+        "amqp",
+        "connect",
+        "gateway"
+    ],
+    "author": {
+        "name": "Burlak Ilia",
+        "email": "burlak@psu.karelia.ru"
+    },
+    "version": "0.1.1",
+    "main": "./handler",
+    "dependencies": {
     "amqp": "*",
     "async": "*"
-  },
-  "readme": "# One way Gateway\r\n\r\nThe module can publish messages in a different services using different protocols, which is set in the configuration. \r\nThis package is compatible with  [connect](https://github.com/senchalabs/connect) and [dispath](https://github.com/caolan/dispatch) projects.\r\nYou should use this module with  [quip](https://github.com/caolan/quip) to set correct http statuses..\r\n\r\n## Example\r\n```\r\nvar connect = require('connect'),\r\n    quip = require('quip'),\r\n    owg = require('owg');\r\n\r\nvar gateway = owg({\r\n\t\"protocol\": \"amqp\",\r\n\t\"connection\": \"amqp://localhost/rabbitmq\",\r\n\t\"exchange\": \"exchange-name\",\r\n\t\"routingKey\": \"yourRoutingKey\",\r\n\t\"durable\": true\r\n}, console.log);\r\n\t\r\nconnect()\r\n    .use(quip)\r\n    .use(connect.bodyParser())\r\n    .use(gateway.handle);\r\n\t\r\ngateway.send('Application started');\r\n```\r\n\r\n## Requests format\r\n\r\nApply only requests with POST methods and body with content type 'application/json'.\r\n\r\n## Supported protocols\r\n\r\n* rabbtimq\r\n\r\n## Http Status\r\n* 202 - messages sent to remote service\r\n* 405 - a request contain incorrect method\r\n* 400 - a request body has an incorrect format or a content type\r\n\r\n## Configuration\r\n\r\nThe configuration of different protocols may be different. To setup the current protocol use the parameter \"protocol\".\r\n\r\n### Amqp configuration\r\n* connection - a connection string has the following format \"amqp[s]://hot[:protocol]/[name]\"\r\n* exchange - exchange name\r\n* routingKey - the name of the message field, which will be used to route between queues\r\n* durable - the boolean flag, it is false by default. If set then the exchange will be marked as durable. Durable exchanges remain active during a server restarts.\r\n\r\n\r\n\r\n",
-  "readmeFilename": "README.md",
-  "_id": "owg@0.1.0",
-  "dist": {
+    },
+    "readme": "# One way Gateway\r\n\r\nThe module can publish messages in a different services using different protocols, which is set in the configuration. \r\nThis package is compatible with  [connect](https://github.com/senchalabs/connect) and [dispath](https://github.com/caolan/dispatch) projects.\r\nYou should use this module with  [quip](https://github.com/caolan/quip) to set correct http statuses..\r\n\r\n## Example\r\n```\r\nvar connect = require('connect'),\r\n    quip = require('quip'),\r\n    owg = require('owg');\r\n\r\nvar gateway = owg({\r\n\t\"protocol\": \"amqp\",\r\n\t\"connection\": \"amqp://localhost/rabbitmq\",\r\n\t\"exchange\": \"exchange-name\",\r\n\t\"routingKey\": \"yourRoutingKey\",\r\n\t\"durable\": true\r\n}, console.log);\r\n\t\r\nconnect()\r\n    .use(quip)\r\n    .use(connect.bodyParser())\r\n    .use(gateway.handle);\r\n\t\r\ngateway.send('Application started');\r\n```\r\n\r\n## Requests format\r\n\r\nApply only requests with POST methods and body with content type 'application/json'.\r\n\r\n## Supported protocols\r\n\r\n* rabbtimq\r\n\r\n## Http Status\r\n* 202 - messages sent to remote service\r\n* 405 - a request contain incorrect method\r\n* 400 - a request body has an incorrect format or a content type\r\n\r\n## Configuration\r\n\r\nThe configuration of different protocols may be different. To setup the current protocol use the parameter \"protocol\".\r\n\r\n### Amqp configuration\r\n* connection - a connection string has the following format \"amqp[s]://hot[:protocol]/[name]\"\r\n* exchange - exchange name\r\n* routingKey - the name of the message field, which will be used to route between queues\r\n* durable - the boolean flag, it is false by default. If set then the exchange will be marked as durable. Durable exchanges remain active during a server restarts.\r\n\r\n\r\n\r\n",
+    "readmeFilename": "README.md",
+    "dist": {
     "shasum": "16a8ea1505ee236e6d64da464376bb52b82400d2"
-  },
-  "_from": "owg@0.1.0",
-  "_resolved": "http://registry.npmjs.org/owg/-/owg-0.1.0.tgz"
+    },
+    "repository": {
+        "type" : "git",
+        "url" : "https://github.com/burlakilia/owg"
+    },
+    "bugs": {
+        "url": "https://github.com/burlakilia/owg/issues"
+    }
+
 }
