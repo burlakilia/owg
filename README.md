@@ -4,6 +4,12 @@ The module can publish messages in a different services using different protocol
 This package is compatible with  [connect](https://github.com/senchalabs/connect) and [dispath](https://github.com/caolan/dispatch) projects.
 You should use this module with  [quip](https://github.com/caolan/quip) to set correct http statuses..
 
+# Install
+```
+   npm install owg
+```
+
+
 ## Example
 ```
 var connect = require('connect'),
